@@ -15,6 +15,9 @@
     JSON.stringify(ldJson) + "<"
   }/script>`
 
+  // Get current year
+  const currentYear = new Date().getFullYear()
+
   const features = [
     {
       name: "Free to host",
@@ -223,209 +226,90 @@
 </script>
 
 <svelte:head>
-  <title>{WebsiteName}</title>
+  <title>{WebsiteName} - Coming Soon</title>
   <meta name="description" content={WebsiteDescription} />
   <!-- eslint-disable-next-line svelte/no-at-html-tags -->
   {@html jsonldScript}
 </svelte:head>
 
-<div class="hero min-h-[60vh]">
-  <div class="hero-content text-center py-12">
-    <div class="max-w-xl">
-      <div
-        class="text-xl md:text-3xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-accent mb-3 md:mb-7 pb-1"
-      >
-        SaaS Starter Demo
-      </div>
-
-      <div
-        class="text-4xl md:text-6xl font-bold px-2"
-        style="line-height: 1.2;"
-      >
-        The
-        <span
-          class="underline decoration-secondary decoration-4 md:decoration-[6px]"
-          >open source</span
-        >,
-        <span
-          class="underline decoration-secondary decoration-4 md:decoration-[6px]"
-          >fast</span
-        >, and
-        <span
-          class="underline decoration-secondary decoration-4 md:decoration-[6px]"
-          >free to host</span
-        >
-        <span> SaaS template</span>
-      </div>
-      <div class="mt-6 md:mt-10 text-sm md:text-lg">
-        Built with <a
-          href="https://kit.svelte.dev"
-          class="link font-bold"
-          target="_blank">SvelteKit</a
-        >,
-        <a href="https://supabase.com" class="link font-bold" target="_blank"
-          >Supabase</a
-        >,
-        <a href="https://stripe.com" class="link font-bold" target="_blank"
-          >Stripe</a
-        >,
-        <a href="https://tailwindcss.com" class="link font-bold" target="_blank"
-          >Tailwind</a
-        >,
-        <a href="https://daisyui.com" class="link font-bold" target="_blank"
-          >DaisyUI</a
-        >, and
-        <a
-          href="https://www.postgresql.org"
-          class="link font-bold"
-          target="_blank">Postgres</a
-        >
-      </div>
-      <div
-        class="mt-6 md:mt-4 flex flex-row flex-wrap gap-4 place-content-center"
-      >
-        <a href="https://github.com/CriticalMoments/CMSaasStarter">
-          <button class="btn btn-primary px-6">★ us on Github</button>
-        </a>
-        <a
-          href="https://github.com/CriticalMoments/CMSaasStarter/tree/main#saas-starter"
-        >
-          <button class="btn btn-outline btn-primary px-6">Read the Docs</button
-          >
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="min-h-[60vh]">
-  <div class="pt-20 pb-8 px-7">
-    <div class="max-w-lg mx-auto text-center">
-      <div
-        class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-accent pb-2"
-      >
-        Explore the Features
-      </div>
-      <div class="mt-4 text-xl font-bold">
-        And try them on this
-        <span
-          class="underline decoration-secondary decoration-[3px] md:decoration-[4px]"
-        >
-          fully functional demo
-        </span>
-      </div>
-    </div>
-
-    <div
-      class="flex gap-6 mt-12 max-w-[1064px] mx-auto place-content-center flex-wrap"
-    >
-      {#each features as feature}
-        <div class="card bg-white w-[270px] min-h-[300px] flex-none shadow-xl">
-          <div class="card-body items-center text-center p-[24px] pt-[32px]">
-            <div>
-              <svg
-                width="50px"
-                height="50px"
-                class="mb-2 mt-1"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <!-- eslint-disable-next-line svelte/no-at-html-tags -->
-                {@html feature.svgContent}
-              </svg>
-            </div>
-            <h2 class="card-title">
-              {feature.name}
-            </h2>
-            <p class="text-sm">
-              {feature.description}
-            </p>
-            {#if feature.link}
-              <a
-                href={feature.link}
-                class="pb-4"
-                target={feature.newPage ? "_blank" : ""}
-              >
-                <button
-                  class="btn btn-xs btn-outline rounded-full btn-primary min-w-[100px]"
-                  >{feature.linkText ? feature.linkText : "Try It"}</button
-                >
-              </a>
-            {/if}
+<div class="hero min-h-screen bg-gradient-to-br from-base-100 to-base-200">
+  <div class="hero-content text-center">
+    <div class="max-w-2xl px-4">
+      <!-- Animated pulse circle -->
+      <div class="flex justify-center mb-8">
+        <div class="relative">
+          <div class="w-32 h-32 rounded-full bg-primary opacity-20 animate-ping absolute"></div>
+          <div class="w-32 h-32 rounded-full bg-primary opacity-40 flex items-center justify-center relative">
+            <svg class="w-16 h-16 text-primary-content" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
           </div>
         </div>
-      {/each}
-    </div>
-  </div>
-</div>
-<div class="hero min-h-[60vh] mt-12">
-  <div class="hero-content text-center pb-16 pt-4 px-4">
-    <div class="max-w-lg">
-      <div
-        class="text-3xl md:text-5xl font-bold bg-clip-text text-transparent bg-linear-to-r from-primary to-accent mt-4 pb-2"
-      >
-        See it in Action
       </div>
-      <div
-        class="flex flex-col lg:flex-row mt-6 gap-6 place-content-center content-center"
-      >
-        <div class="hidden md:block">
-          <a href="https://criticalmoments.io" target="_blank" class="link">
-            <div class="mockup-browser border">
-              <div class="mockup-browser-toolbar">
-                <div class="input" style="background:#eee;">
-                  https://criticalmoments.io
-                </div>
-              </div>
-              <div class="flex justify-center">
-                <img
-                  alt="Screenshot of criticalmoments.io homepage"
-                  class="aspect-2044/1242"
-                  src="/images/example-home.png"
-                />
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="md:hidden">
-          <a href="https://criticalmoments.io" target="_blank" class="link">
-            <div class="card shadow-xl border overflow-hidden">
-              <img
-                alt="Screenshot of criticalmoments.io homepage"
-                class="aspect-2044/1242"
-                src="/images/example-home.png"
-              />
-            </div></a
-          >
-        </div>
-        <div class="min-w-[270px] lg:min-w-[420px] flex mt-6 lg:mt-0">
-          <div class="my-auto">
-            <div class="px-4 text-lg md:text-xl">
-              <a href="https://criticalmoments.io" class="" target="_blank"
-                >SaaS Starter was created by <span
-                  class="font-bold whitespace-nowrap">Critical Moments</span
-                >: a SDK to to help mobile apps
-                <span class="underline decoration-secondary decoration-[3px]"
-                  >increase conversion rates and app-ratings.</span
-                ></a
-              >
-            </div>
-            <div class="px-4 mt-6 text-lg md:text-xl">
-              Our <a
-                href="https://criticalmoments.io"
-                class="link font-bold"
-                target="_blank">webpage</a
-              > is the best example of SaaS Starter with style and real content.
-            </div>
-            <div class="mt-4 text-large">
-              <a href="https://criticalmoments.io" target="_blank">
-                <button class="btn btn-primary btn-wide mt-3"
-                  >See it in Action</button
-                >
-              </a>
-            </div>
+
+      <!-- Main heading -->
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+        Coming Soon
+      </h1>
+
+      <!-- Subheading -->
+      <p class="text-xl md:text-2xl mb-8 text-base-content/80">
+        We're building something amazing. Stay tuned!
+      </p>
+
+      <!-- Description -->
+      <div class="prose prose-lg mx-auto mb-12">
+        <p class="text-base-content/70">
+          Community Connect is currently under development. We're working hard to bring you
+          an innovative platform that will transform the way communities connect and collaborate.
+        </p>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body items-center text-center">
+            <div class="text-4xl mb-2">🚀</div>
+            <h3 class="card-title text-lg">Lightning Fast</h3>
+            <p class="text-sm text-base-content/70">Built with modern technology for optimal performance</p>
           </div>
         </div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body items-center text-center">
+            <div class="text-4xl mb-2">🔒</div>
+            <h3 class="card-title text-lg">Secure</h3>
+            <p class="text-sm text-base-content/70">Enterprise-grade security powered by Firebase</p>
+          </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl">
+          <div class="card-body items-center text-center">
+            <div class="text-4xl mb-2">💡</div>
+            <h3 class="card-title text-lg">Intuitive</h3>
+            <p class="text-sm text-base-content/70">Designed with user experience in mind</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA section -->
+      <div class="mb-8">
+        <p class="text-lg mb-4 text-base-content/80">Want to be notified when we launch?</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            class="input input-bordered input-primary w-full sm:w-80"
+          />
+          <button class="btn btn-primary">Notify Me</button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="mt-16 pt-8 border-t border-base-300">
+        <p class="text-sm text-base-content/60">
+          © {currentYear} Community Connect. All rights reserved.
+        </p>
       </div>
     </div>
   </div>
