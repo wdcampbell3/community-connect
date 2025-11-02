@@ -3,6 +3,15 @@ name: Tests
 on: [push, pull_request]
 
 env:
+  # Firebase settings
+  VITE_FIREBASE_API_KEY: "AIzaSyCCl28zGpOyLtp8XrdHwQDE2EVEZU0UzHA"
+  VITE_FIREBASE_AUTH_DOMAIN: "communityconnect-b0d0c.firebaseapp.com"
+  VITE_FIREBASE_PROJECT_ID: "communityconnect-b0d0c"
+  VITE_FIREBASE_STORAGE_BUCKET: "communityconnect-b0d0c.firebasestorage.app"
+  VITE_FIREBASE_MESSAGING_SENDER_ID: "7506800121"
+  VITE_FIREBASE_APP_ID: "1:7506800121:web:1f70d1e6dcfc86a07f2128"
+  VITE_FIREBASE_MEASUREMENT_ID: "G-KZE756XN9Z"
+  # Supabase placeholders
   PUBLIC_SUPABASE_URL: "https://fake_test_url.supabase.co"
   PUBLIC_SUPABASE_ANON_KEY: "fake_anon_key"
   PRIVATE_SUPABASE_SERVICE_ROLE: "fake_service_role"
