@@ -1,3 +1,6 @@
 name = "community-connect"
 compatibility_date = "2025-11-02"
-pages_build_output_dir = ".svelte-kit/cloudflare"
+main = ".svelte-kit/output/server/index.js"
+
+[site]
+bucket = ".svelte-kit/output/client"
