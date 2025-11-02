@@ -1,0 +1,38 @@
+mutation CreateForum($title: String!, $description: String) @auth(level: USER) {
+  forum_insert(data: {
+    title: $title,
+    description: $description,
+    createdAt_expr: "request.time"
+  })
+}
+
+query ListForums @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  forums {
+    id
+    title
+    description
+    createdAt
+  }
+}
+
+mutation CreatePost($forumId: UUID!, $content: String!) @auth(level: USER) {
+  post_insert(data: {
+    forumId: $forumId,
+    userId_expr: "auth.uid",
+    content: $content,
+    createdAt_expr: "request.time"
+  })
+}
+
+query ListPostsForForum($forumId: UUID!) @auth(level: PUBLIC, insecureReason: "This operation is safe to expose to the public") {
+  posts(where: {forumId: {eq: $forumId}}) {
+    id
+    content
+    createdAt
+    user {
+      id
+      displayName
+      photoUrl
+    }
+  }
+}

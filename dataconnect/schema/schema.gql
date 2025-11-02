@@ -1,0 +1,47 @@
+type User @table {
+  displayName: String!
+  email: String!
+  createdAt: Timestamp!
+  bio: String
+  photoUrl: String
+  linkedinProfile: String
+}
+
+type Event @table {
+  title: String!
+  date: Date!
+  time: String!
+  location: String!
+  description: String!
+  createdAt: Timestamp!
+  coverImageUrl: String
+}
+
+type Registration @table(key: ["user", "event"]) {
+  user: User!
+  event: Event!
+  createdAt: Timestamp!
+}
+
+type Forum @table {
+  title: String!
+  createdAt: Timestamp!
+  description: String
+}
+
+type Post @table {
+  user: User!
+  forum: Forum!
+  content: String!
+  createdAt: Timestamp!
+  parentPost: Post
+}
+
+type Resource @table {
+  event: Event!
+  name: String!
+  url: String!
+  resourceType: String!
+  createdAt: Timestamp!
+  description: String
+}
